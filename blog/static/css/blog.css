@@ -5,7 +5,7 @@
 .f_r{ float: right;}
 .c{ float: none;}
 .bk_color{ background-color: #FFF;}
-body{background: url("../static/img/bg1.png"); background-size: 100%;}
+body{background: url("../img/bg1.png"); background-size: 100%;}
 .b_wapper{max-width: 1200px; background-color: #FFF; position: relative; height: auto; min-height: 100%; /*border: 1px solid #CCC;*/}
 
 /*导航栏*/
@@ -46,10 +46,10 @@ a:link, a:visited { text-decoration: none; color: #666 }
 .autor span { margin: 0 10px 0 0; padding-left: 20px }
 .autor span a { color: #756f71; }
 .autor span a:hover { padding-bottom: 5px; border-bottom:2px solid #000; transition: all 0.5s ease-out;}
-.lm { background: url(../static/img/newsbg01.png) no-repeat left center }
-.dtime { background: url(../static/img/newsbg02.png) no-repeat left center }
-.viewnum { background: url(../static/img/newsbg04.png) no-repeat left center }
-.pingl { background: url(../static/img/newsbg03.png) no-repeat left center }
+.lm { background: url(../img/newsbg01.png) no-repeat left center }
+.dtime { background: url(../img/newsbg02.png) no-repeat left center }
+.viewnum { background: url(../img/newsbg04.png) no-repeat left center }
+.pingl { background: url(../img/newsbg03.png) no-repeat left center }
 .tit01 h3 { line-height: 40px; color: #38485A; font-size: 18px; border-bottom: 1px solid #E6E6E6; height: 40px }
 .bk_c_f1{background-color: #fff;}
 

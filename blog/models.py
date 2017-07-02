@@ -1,32 +1,15 @@
+# -*- coding:utf-8 -*-
 from django.db import models
 
 # Create your models here.
-# 文章模型
-class Article(models.Model):
-    title = models.CharField('标题', max_length=60)
-    describe = models.CharField('描述', max_length=500)
-    content = models.TextField('正文')
-    create_date = models.DateTimeField('创建时间', auto_now_add=True)
-    page_view = models.IntegerField('浏览量', default=0)
-    support = models.IntegerField('赞', default=0)
-    trample = models.IntegerField('踩', default=0)
-    sort = models.ForeignKey(Category , '分类', default=0)
-    istop = models.BooleanField('置顶', default=False)
-
-    class Meta:
-        verbose_name = '文章'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.title
 
 # 分类模型
 class Category(models.Model):
     name = models.CharField('类名', max_length=20)
-    rank = models.IntegerField('序号', default=99)
+    rank = models.IntegerField('序号', unique=True)
 
     class Meta:
-        verbose_name = '评论'
+        verbose_name = '分类'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -37,23 +20,31 @@ class Tag(models.Model):
     name = models.CharField('标签名', max_length=20)
 
     class Meta:
-        verbose_name = '评论'
+        verbose_name = '标签'
         verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.name
 
-# 文章<-->标签模型
-class ArticleToTag(models.Model):
-    Article_id = models.IntegerField('文章ID')
-    Tag_id = models.IntegerField('标签ID')
+# 文章模型
+class Article(models.Model):
+    title = models.CharField('标题', max_length=60)
+    describe = models.TextField('描述', max_length=500)
+    content = models.TextField('正文')
+    create_date = models.DateTimeField('创建时间', auto_now_add=True)
+    page_view = models.IntegerField('浏览量', default=0)
+    support = models.IntegerField('赞', default=0)
+    trample = models.IntegerField('踩', default=0)
+    istop = models.BooleanField('是否置顶', default=False)
+    category = models.ForeignKey(Category, verbose_name = '分类')
+    tag = models.ManyToManyField(Tag, verbose_name='标签')
 
     class Meta:
-        verbose_name = '文章标签关系'
+        verbose_name = '文章'
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return str(self.id)
+        return str(self.title)
 
 # 评论模型
 class Comment(models.Model):
