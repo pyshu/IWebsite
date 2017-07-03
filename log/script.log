@@ -7,3 +7,272 @@
 2017-07-02 22:00:48,987 [Thread-28:26108] [django.request:152] [base:get_response] [WARNING]- Not Found: /upload/kindeditor/2017/7/8c7699ec-5f2e-11e7-9c16-a526dea852a1.jpg
 2017-07-02 22:02:37,183 [Thread-28:27120] [django.request:152] [base:get_response] [WARNING]- Not Found: /admin/blog/article/1/change/static/upload/kindeditor/2017/7/1a683c1a-5f2f-11e7-83d1-a526dea852a1.jpg/change/
 2017-07-02 22:04:20,121 [Thread-26:25680] [django.request:152] [base:get_response] [WARNING]- Not Found: /upload/kindeditor/2017/7/57e23f86-5f2f-11e7-a543-a526dea852a1.jpg
+2017-07-03 09:57:43,986 [Thread-2:7192] [django.request:152] [base:get_response] [WARNING]- Not Found: /
+2017-07-03 09:57:44,091 [Thread-3:8020] [django.request:152] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2017-07-03 10:03:41,539 [Thread-52:6900] [django.request:152] [base:get_response] [WARNING]- Not Found: /upload/kindeditor/2017/7/d61671ba-5f93-11e7-acd7-005056c00008.jpg
+2017-07-03 10:10:43,646 [Thread-33:7220] [django.request:152] [base:get_response] [WARNING]- Not Found: /admin/blog/article/add/static/upload/kindeditor/2017/7/d1994392-5f94-11e7-9077-005056c00008.jpg/change/
+2017-07-03 10:11:29,140 [Thread-7:1708] [django.request:152] [base:get_response] [WARNING]- Not Found: /blog/static/upload/kindeditor/2017/7/ecd101d2-5f94-11e7-bd91-005056c00008.jpg
+2017-07-03 11:46:20,892 [Thread-31:7712] [django.request:152] [base:get_response] [WARNING]- Not Found: /admin/upload/
+2017-07-03 14:25:31,476 [Thread-44:9648] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\duan\Desktop\PythonLearn\IWebsite\blog\views.py", line 5, in index
+    return  render(request, "index_blog.html", locals())
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\backends\django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 242, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 568, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 22: 'static', expected 'endblock'. Did you forget to register or load this tag?
+2017-07-03 14:40:30,530 [Thread-71:4368] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\duan\Desktop\PythonLearn\IWebsite\blog\views.py", line 5, in index
+    return  render(request, "index_blog.html", locals())
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 152, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 149, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 129, in find_template
+    template_name, skip=history,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 238, in do_block
+    raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'blog_newart' appears more than once
+2017-07-03 14:41:42,618 [Thread-72:12344] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\duan\Desktop\PythonLearn\IWebsite\blog\views.py", line 5, in index
+    return  render(request, "index_blog.html", locals())
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 994, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 152, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 149, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 129, in find_template
+    template_name, skip=history,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 238, in do_block
+    raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'blog_art' appears more than once
+2017-07-03 15:15:23,442 [Thread-120:15540] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\duan\Desktop\PythonLearn\IWebsite\blog\views.py", line 5, in index
+    return  render(request, "index_blog.html", locals())
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\backends\django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 242, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\defaulttags.py", line 802, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 603, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 697, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 609, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'list'
+2017-07-03 16:04:48,529 [Thread-8:17636] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\duan\Desktop\PythonLearn\IWebsite\blog\views.py", line 8, in index
+    return  render(request, "index_blog.html", locals())
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\backends\django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\loader_tags.py", line 242, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\defaulttags.py", line 803, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 603, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\template\base.py", line 703, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '-D' from 'art.create_date|date:Y-D'
+2017-07-03 16:51:06,806 [Thread-2:18676] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\duan\Desktop\PythonLearn\IWebsite\blog\views.py", line 7, in index
+    article_new = Article.objects.all()[-3:]
+  File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\models\query.py", line 275, in __getitem__
+    "Negative indexing is not supported."
+AssertionError: Negative indexing is not supported.

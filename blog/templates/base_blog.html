@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Pyshu的小窝{% endblock %}</title>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+</head>
+<body>
+<div class="b_wapper">
+    <header class="">
+        <div class="logo l">
+            <img src="../static/img/pyshu2.png" />
+        </div>
+        <nav class="hd-nav">
+            <ul class="hd-ul">
+                <li class="hd-li"><a class="cur" href=""><span>首页<i class="underline"></i></span></a></li>
+                <li class="hd-li"><a href=""><span>文章<i class="underline"></i></span></a></li>
+                <li class="hd-li"><a href=""><span>时间轴<i class="underline"></i></span></a></li>
+                <li class="hd-li"><a href="https://github.com/pyshu"><span >github<i class="underline"></i></span></a></li>
+                <li class="hd-li"><a href=""><span>关于<i class="underline"></i></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="center">
+        <div class="l_wapper l">
+            <div class="topnews">
+                {% block blog_content %}{% endblock %}
+            </div>
+        </div>
+        <div class="r_wapper l">
+            <div class="searchFrom">
+                <form class="sform " method="get" action="" style="" onsubmit="return searchResult(this);">
+                    <input type="hidden" name="page_id" value="6432">
+                    <input type="hidden" name="searchtype" value="post">
+                    <input type="text" class="stext" name="search" id="form_search" value="" placeholder="请输入需要搜索的文字">
+                    <input type="submit" class="ssubmit" value="Go!">
+                </form>
+            </div>
+            <div class="abt_me">
+                <h2>关于博主</h2>
+                <figure><img src="{% static 'img/hat.jpg' %}"></figure>
+                <p>&nbsp;&nbsp;关于我,我就是我。</p>
+            </div>
+            {% block blog_cat %}{% endblock %}
+
+            {% block blog_art %}{% endblock %}
+
+            {% block blog_tag %}{% endblock %}
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2016-{% now "Y" %}<br>个人博客后台 by pyshu</p>
+    </footer>
+</div>
+</body>
+</html>

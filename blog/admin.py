@@ -11,17 +11,17 @@ class ArticleAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('title', 'describe', 'content', 'category','tag')
         }),
-        ('Advanced options', {
+        ('高级选项', {
             'classes': ('collapse',),
             'fields': ('page_view', 'support', 'trample', 'istop'),
         }),
     )
 
     class Media:
-        # 在管理后台的HTML文件中加入js文件, 每一个路径都会追加STATIC_URL/
+        # 在管理后台的HTML文件中加入js文件
         js = (
             '/static/js/kindeditor-4.1.10/kindeditor-all.js',
-            '/static/js/kindeditor-4.1.10/lang.zh_CN.js',
+            '/static/js/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/js/kindeditor-4.1.10/config.js',
         )
 

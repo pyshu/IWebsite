@@ -1,46 +1,81 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
-from django.conf import settings
+#coding=utf-8
+import  os
+import  uuid
+import  json
+import  datetime
+
 from django.views.decorators.csrf import csrf_exempt
-import os
-import uuid
-import json
-import datetime as dt
+from django.http import  HttpResponse
+from django.conf import settings
 
+'''
+@csrf_exempt用于取消csrftoken验证
+url为:http://127.0.0.1:8000/admin/upload/?dir=media post请求
+'''
 @csrf_exempt
-def upload_image(request, dir_name):
-    ##################
-    #  kindeditor图片上传返回数据格式说明：
-    # {"error": 1, "message": "出错信息"}
-    # {"error": 0, "url": "图片地址"}
-    ##################
-    result = {"error": 1, "message": "上传出错"}
-    files = request.FILES.get("imgFile", None)
-    if files:
-        result =image_upload(files, dir_name)
-    return HttpResponse(json.dumps(result), content_type="application/json")
+def upload(request):
+    '''
+    kindeditor图片上传返回数据格式说明：
+    {"error": 1, "message": "出错信息"}
+    {"error": 0, "url": "图片地址"}
+    '''
+    result = {"error": 1, "message": u"上传失败"}
+    files = request.FILES.get("imgFile", None)  #input type="file" 中name属性对应的值为imgFile
+    type = request.GET['dir']  #获取资源类型
+    if  files:
+        result = process_upload(files,type)
+    #结果以json形式返回
+    return HttpResponse(json.dumps(result),content_type="application/json")
 
-#目录创建
-def upload_generation_dir(dir_name):
-    today = dt.datetime.today()
-    dir_name = dir_name + '/%d/%d/' %(today.year,today.month)
-    if not os.path.exists(settings.MEDIA_ROOT + dir_name):
-        os.makedirs(settings.MEDIA_ROOT + dir_name)
-    return dir_name
 
-# 图片上传
-def image_upload(files, dir_name):
-    #允许上传文件类型
-    allow_suffix =['jpg', 'png', 'jpeg', 'gif', 'bmp']
-    file_suffix = files.name.split(".")[-1]
-    if file_suffix not in allow_suffix:
-        return {"error": 1, "message": "图片格式不正确"}
-    relative_path_file = upload_generation_dir(dir_name)
-    path=os.path.join(settings.MEDIA_ROOT, relative_path_file)
-    if not os.path.exists(path): #如果目录不存在创建目录
-        os.makedirs(path)
-    file_name=str(uuid.uuid1())+"."+file_suffix
-    path_file=os.path.join(path, file_name)
-    file_url = settings.MEDIA_URL + relative_path_file + file_name
-    open(path_file, 'wb').write(files.file.read()) # 保存图片
+def is_ext_allowed(type,ext):
+    '''
+    根据类型判断是否支持对应的扩展名
+    '''
+    ext_allowed = {}
+    ext_allowed['image'] = ['jpg','jpeg', 'bmp', 'gif', 'png']
+    ext_allowed['flash'] = ["swf", "flv"]
+    ext_allowed['media'] = ["swf", "flv", "mp3", "wav", "wma", "wmv", "mid", "avi", "mpg", "asf", "rm", "rmvb", "mp4"]
+    ext_allowed['file'] = ["doc", "docx", "xls", "xlsx", "ppt", "htm", "html", "txt", "zip", "rar", "gz", "bz2", 'pdf']
+    return ext in ext_allowed[type]
+
+def get_relative_file_path():
+    '''
+    获取相对路径
+    '''
+    dt = datetime.datetime.today()
+    relative_path = '%s/%s/' %(dt.year,dt.month)
+    absolute_path = os.path.join(settings.MEDIA_ROOT,relative_path)
+    if not os.path.exists(absolute_path):
+        os.makedirs(absolute_path)
+    return relative_path
+
+
+def process_upload(files,type):
+    dir_types = ['image','file']
+    #判断是否支持对应的类型
+    if type not in dir_types:
+        return {"error":1, "message": u"上传类型不支持[必须是image,flash,media,file]"}
+
+    cur_ext = files.name.split('.')[-1]  #当前上传文件的扩展名
+    #判断是否支持对应的扩展名
+    if not is_ext_allowed(type,cur_ext):
+        return {'error':1, 'message': u'error:扩展名不支持 %s类型不支持扩展名%s' %(type,cur_ext)}
+
+    relative_path = get_relative_file_path()
+    #linux中一切皆文件
+    file_name = str(uuid.uuid1()) + "." + cur_ext
+    base_name = os.path.join(settings.MEDIA_ROOT,relative_path)
+    file_full_path = os.path.join(base_name,file_name).replace('\\','/') #windows中的路径以\分隔
+    file_url = settings.MEDIA_URL + relative_path + file_name
+
+    with open(file_full_path,'wb') as f:
+        if  files.multiple_chunks() == False:  #判断是否大于2.5M
+            f.write(files.file.read())
+        else:
+            for chunk in files.chunks():
+                f.write(chunk)
+
+
     return {"error": 0, "url": file_url}

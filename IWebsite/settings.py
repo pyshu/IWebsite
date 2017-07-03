@@ -129,10 +129,10 @@ STATICFILES_DIRS = (
 )
 
 #文件上传配置
-MEDIA_URL = '/upload/'
+MEDIA_URL = '/static/upload/'
 
 #文件上传配置
-MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/upload')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/upload/')
 
 # 自定义日志输出信息
 LOGGING = {
