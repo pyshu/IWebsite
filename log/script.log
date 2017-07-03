@@ -276,3 +276,16 @@ Traceback (most recent call last):
   File "C:\Users\duan\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\models\query.py", line 275, in __getitem__
     "Negative indexing is not supported."
 AssertionError: Negative indexing is not supported.
+2017-07-03 20:56:03,982 [Thread-2:17276] [django.request:152] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2017-07-03 20:56:06,645 [Thread-5:8860] [django.request:152] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2017-07-03 21:05:29,667 [Thread-106:23940] [django.request:152] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2017-07-03 21:27:33,637 [Thread-2:13744] [django.request:152] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2017-07-03 21:27:47,945 [Thread-16:9008] [django.request:132] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /articles/1
+Traceback (most recent call last):
+  File "C:\Users\Lius153\AppData\Roaming\Python\Python35\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = get_response(request)
+  File "C:\Users\Lius153\AppData\Roaming\Python\Python35\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Lius153\AppData\Roaming\Python\Python35\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: index() takes 1 positional argument but 2 were given

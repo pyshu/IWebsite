@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Pyshu·{{ article.title }}{% endblock %}
+
+{% block blog_content %}
+    <h2><b>全文阅读</b>: {{ article.title }}</h2>
+    <div class="blogs">
+        <ul style="width: 100%">
+            <div style="clear: none;margin-bottom: 20px"> {{ article.content|safe  }} </div>
+            <p class="autor" style="position:inherit">
+                <span class="lm f_l"><a href="/">{{ article.category.name }}</a></span>
+                <span class="dtime f_l">{{ article.create_date|date:"Y-m-d" }}</span>
+                <span class="viewnum f_l">浏览（{{ article.page_view }})<a href="/"></a></span>
+                <span class="pingl f_l">评论（<a href="/">30</a>）</span>
+            </p>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block blog_cat %}
+    <div class="new_cat">
+        <h2>文章分类</h2>
+        <ul>
+            {% for cat in category %}
+                <li><a href=""><span>{{ cat.name }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{#{% block blog_art %}#}
+{#    <div class="new_art">#}
+{#        <h2>最新文章</h2>#}
+{#        <ul>#}
+{#            {% for d in article %}#}
+{#                <li><img src="{% static 'img/hat.jpg' %}"><a href=""><span>{{ d.title }}</span></a><p>发布日期：20170707</p></li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{% block blog_tag %}
+    <div class="cld_tag">
+        <h2>标签云</h2>
+        <ul>
+            {% for t in tag %}
+                <li><a href="/tags/{{ t.id }}"><span>{{ t.name }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

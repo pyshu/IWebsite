@@ -21,6 +21,6 @@ from blog.upload import upload
 urlpatterns = [
     url(r'^admin/upload/$', upload, name='upload'),
     url(r'^admin/', admin.site.urls),
-    url(r'^articles/', views.index),
-    url(r'^', views.index),
+    url(r'^articles/(.+)', views.articles),
+    url(r'^index/', views.index),
 ]
