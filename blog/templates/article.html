@@ -1,20 +1,84 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load pagetag %}
 
 {% block title %}Pyshu·{{ article.title }}{% endblock %}
 
+{% block nav %}
+    <li class="hd-li"><a href="/index"><span>首页<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a class="cur" href="/articles/"><span>文章<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="/category/"><span>分类<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="https://github.com/pyshu" target="_blank"><span>github<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="/about/"><span>关于<i class="underline"></i></span></a></li>
+{% endblock %}
+
 {% block blog_content %}
-    <h2><b>全文阅读</b>: {{ article.title }}</h2>
-    <div class="blogs">
-        <ul style="width: 100%">
-            <div style="clear: none;margin-bottom: 20px"> {{ article.content|safe  }} </div>
-            <p class="autor" style="position:inherit">
-                <span class="lm f_l"><a href="/">{{ article.category.name }}</a></span>
-                <span class="dtime f_l">{{ article.create_date|date:"Y-m-d" }}</span>
-                <span class="viewnum f_l">浏览（{{ article.page_view }})<a href="/"></a></span>
-                <span class="pingl f_l">评论（<a href="/">30</a>）</span>
-            </p>
-        </ul>
+    {% if param != '' %}
+        <h2><b>全文阅读</b>: {{ article.title }}</h2>
+        <div class="blogs">
+            <ul style="width: 100%">
+                <div style="clear: none;margin-bottom: 20px"> {{ article.content|safe }} </div>
+                <p class="autor" style="position:inherit">
+                    <span class="lm f_l"><a href="/">{{ article.category.name }}</a></span>
+                    <span class="dtime f_l">{{ article.create_date|date:"Y-m-d" }}</span>
+                    <span class="viewnum f_l">浏览（{{ article.page_view }})<a href="/"></a></span>
+                    <span class="pingl f_l">评论（<a href="/">30</a>）</span>
+                </p>
+            </ul>
+        </div>
+    {% else %}
+        <h2>全部文章</h2>
+        {% for art in contacts %}
+            <div class="blogs">
+                <figure><img src="../static/img/01.jpg"></figure>
+                <ul>
+                    <h3><a href="/articles/{{ art.id }}">{{ art.title }}</a></h3>
+                    <p class="t_idx">{{ art.describe }}</p>
+                    <p class="autor">
+                        <span class="lm f_l"><a
+                                href="/category/{{ art.category.id }}">{{ art.category.name }}</a></span>
+                        <span class="dtime f_l">{{ art.create_date|date:"Y-m-d" }}</span>
+                        <span class="viewnum f_l">浏览({{ art.page_view }})<a href="/"></a></span>
+                        <span class="pingl f_l">评论（<a href="/">30</a>）</span>
+                    </p>
+                </ul>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block blog_paginator %}
+    {% if contacts != None %}
+        <div class="page">
+            <ul>
+                {% if contacts.has_previous %}
+                    <li><a href="?page={{ contacts.previous_page_number }}">&lt;&lt;</a></li>
+                {% else %}
+                    <li><a href="javascript:void(0);">&lt;&lt;</a></li>
+                {% endif %}
+
+                {% for page in contacts.paginator.page_range %}
+                    {% guess_page contacts.number page %}
+                {% endfor %}
+
+                {% if contacts.has_next %}
+                    <li><a href="?page={{ contacts.next_page_number }}">&gt;&gt;</a></li>
+                {% else %}
+                    <li><a href="javascript:void(0);">&gt;&gt;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block search %}
+    <div class="searchFrom">
+        <form class="sform " method="get" action="" style="" onsubmit="return searchResult(this);">
+            <input type="hidden" name="page_id" value="6432">
+            <input type="hidden" name="searchtype" value="post">
+            <input type="text" class="stext" name="search" id="form_search" value="" placeholder="请输入需要搜索的文字">
+            <input type="submit" class="ssubmit" value="Go!">
+        </form>
     </div>
 {% endblock %}
 

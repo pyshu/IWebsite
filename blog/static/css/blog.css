@@ -90,6 +90,13 @@ a:link, a:visited { text-decoration: none; color: #666 }
 footer {width: 100%; background-color: #6E6E6E; bottom: 0; height: 53px;}
 footer p{ width: 173px; line-height: 25px; background: #6E6E6E; color: #FFF;}
 
+/*分页*/
+.page{color: #FFFFFF; text-align:center; margin: 0 auto;width: 165px;}
+.page ul{list-style: none; margin-top: 10px;}
+.page li{float: left; width: 25px; height: 25px;border: 1px solid #CCC;}
+.page a{ line-height: 25px; text-align:center; display:block;}
+.page .atv{ font-weight: bolder }
+
 @media all and (min-width: 1000px) {
     .r_wapper{display: block}
     .l_wapper{width: 75%}

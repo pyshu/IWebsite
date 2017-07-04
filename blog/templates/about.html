@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Pyshu·关于本站{% endblock %}
+
+{% block nav %}
+    <li class="hd-li"><a href="/index"><span>首页<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="/articles/"><span>文章<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="/category/"><span>分类<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="https://github.com/pyshu" target="_blank"><span>github<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a class="cur" href="/about/"><span>关于<i class="underline"></i></span></a></li>
+{% endblock %}
+
+{% block blog_content %}
+    <div style="height: 500px">
+        <h2>关于</h2>
+        <p style="line-height: 40px">&nbsp;&nbsp;本博客是基于 django 1.10 + mysql 5.6 开发，后台使用django admin，使用suit替换了前端，kindaditor
+        富文本编辑器替换纯文本编辑器，并对编辑器做了简单的裁剪。前端使用h5完成。
+        </p>
+    </div>
+{% endblock %}
