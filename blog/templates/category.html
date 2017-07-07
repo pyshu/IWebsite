@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load pagetag %}
 
 {% block title %}Pyshu·文章分类{% endblock %}
 
@@ -12,10 +13,10 @@
 {% endblock %}
 
 {% block blog_content %}
-    <h2>文章分类·</h2>
+    <h2>文章分类 &gt;&gt; {{ category_name }}</h2>
     {% for art in contacts %}
-        <div class="blogs">
-            <ul>
+        <div class="blogs" style="min-height: 125px">
+            <ul style="width: auto">
                 <h3><a href="/articles/{{ art.id }}">{{ art.title }}</a></h3>
                 <p class="t_idx">{{ art.describe }}</p>
                 <p class="autor">
@@ -29,6 +30,29 @@
     {% endfor %}
 {% endblock %}
 
+{% block blog_paginator %}
+    {% if paginator.count > 6 %}
+        <div class="page">
+            <ul>
+                {% if contacts.has_previous %}
+                    <li><a href="?page={{ contacts.previous_page_number }}">&lt;&lt;</a></li>
+                {% else %}
+                    <li><a href="javascript:void(0);">&lt;&lt;</a></li>
+                {% endif %}
+
+                {% for page in contacts.paginator.page_range %}
+                    {% guess_page contacts.number page %}
+                {% endfor %}
+
+                {% if contacts.has_next %}
+                    <li><a href="?page={{ contacts.next_page_number }}">&gt;&gt;</a></li>
+                {% else %}
+                    <li><a href="javascript:void(0);">&gt;&gt;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block search %}
     <div class="searchFrom">
@@ -46,7 +70,7 @@
         <h2>文章分类</h2>
         <ul>
             {% for cat in category %}
-                <li><a href=""><span>{{ cat.name }}</span></a></li>
+                <li><a href="/category/{{ cat.id }}"><span>{{ cat.name }}</span></a></li>
             {% endfor %}
         </ul>
     </div>

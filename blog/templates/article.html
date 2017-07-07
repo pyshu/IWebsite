@@ -48,7 +48,7 @@
 {% endblock %}
 
 {% block blog_paginator %}
-    {% if contacts != None %}
+    {% if contacts != None and paginator.count > 10 %}
         <div class="page">
             <ul>
                 {% if contacts.has_previous %}

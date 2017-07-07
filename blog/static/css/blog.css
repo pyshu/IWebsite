@@ -23,7 +23,7 @@ header {border-bottom:5px solid #6E6E6E; background-color: #FFF; overflow: hidde
 
 /*左文章列表*/
 .center {background-color: #FFFFFF; height: auto; overflow: hidden;}
-.l_wapper{ width: 95%; margin-top: 10px; padding: 10px; background-color: #FFF;min-width: 300px;border: 1px solid #CCC; }
+.l_wapper{ width: 95%; margin-top: 10px; padding: 10px; background-color: #FFF;min-width: 300px;border: 1px solid #CCC;}
 
 a:link, a:visited { text-decoration: none; color: #666 }
 .topnews { margin: 0;}

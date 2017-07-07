@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^articles/(.*)', views.articles),
     url(r'^category/(.*)', views.category),
+    url(r'^tags/(.*)', views.tag),
     url(r'^index/', views.index),
     url(r'^about/', views.about),
 ]
