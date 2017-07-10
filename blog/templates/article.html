@@ -26,6 +26,29 @@
                 </p>
             </ul>
         </div>
+        <div class="blog_ctg">
+            <h3>全部评论</h3>
+            <ul>
+                <li class="">
+                    <div class="blog_ctg_self">
+                        <div class="blog_ctg_avatar ">
+                            <img alt="" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50" class="avatar" height="50" width="50"></div>
+                        <div class="blog_ctg_body ">
+                            <div class="">
+                	            <span class="">
+                		            <a href="" class="blog_ctg_name">谢映雪</a>
+               	 	            </span>
+                            </div>
+                            <p>加油啊！！！！顶哦!!!!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!顶哦!!</p>
+                            <div class="">
+                                <span class="blog_ctg_time">2016年1月11日 下午9:49</span>
+                                <a class="" href="" onclick="return 1"><span class="blog_ctg_reply"></span>回复</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     {% else %}
         <h2>全部文章</h2>
         {% for art in contacts %}
@@ -87,7 +110,7 @@
         <h2>文章分类</h2>
         <ul>
             {% for cat in category %}
-                <li><a href=""><span>{{ cat.name }}</span></a></li>
+                <li><a href="/category/{{ cat.id }}"><span>{{ cat.name }}</span></a></li>
             {% endfor %}
         </ul>
     </div>

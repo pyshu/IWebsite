@@ -24,9 +24,9 @@ def articles(request, param):
     category = Category.objects.all()
     try:
         if param == '':
-            article = Article.objects.all()
+            # article = Article.objects.all()
             page = request.GET.get('page')
-            paginator = Paginator(article, 10)  # Show 5 contacts per page
+            paginator = Paginator(Article.objects.all(), 10)  # Show 5 contacts per page
             try:
                 contacts = paginator.page(page)
             except PageNotAnInteger:
