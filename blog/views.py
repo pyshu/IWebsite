@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from blog.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.forms.models import model_to_dict
 
 # Create your views here.
 def index(request):
@@ -24,7 +25,6 @@ def articles(request, param):
     category = Category.objects.all()
     try:
         if param == '':
-            # article = Article.objects.all()
             page = request.GET.get('page')
             paginator = Paginator(Article.objects.all(), 10)  # Show 5 contacts per page
             try:
@@ -37,6 +37,15 @@ def articles(request, param):
                 contacts = paginator.page(paginator.num_pages)
         else:
             article = Article.objects.get(id=int(param))
+            first_comment = Comment.objects.filter(article = int(param), pid = None)
+            rear_comment = Comment.objects.filter(article=int(param), pid_id__isnull=True)
+            comment = {}
+            # for cmt in rear_comment:
+                # if cmt.pid == None:
+                #     comment.append({'id':cmt.id, 'content':cmt.content, 'username':cmt.username, 'date_publish':cmt.date_publish, 'pid': cmt.pid})
+                # else:
+            #     comment.append(model_to_dict(cmt))
+            # print(comment)
         return render(request, "article.html", locals())
     except :
         return render(request, "404.html", {"error" : "提交链接非法."})

@@ -56,6 +56,7 @@ a:link, a:visited { text-decoration: none;}
 /*评论*/
 .blog_ctg{width: auto; position: relative; padding-left: 20px; }
 .blog_ctg h3{font-size: 16px; margin: 10px 0; padding-bottom: 5px; border-bottom: 1px solid #E6E6E6; }
+.blog_ctg h4{font-size: 14px; margin: 10px 0 10px 10px; padding-bottom: 5px; border-bottom: 1px solid #E6E6E6; }
 .blog_ctg ul{}
 .blog_ctg li{ width: 100%; border-bottom: 1px solid #E6E6E6;list-style: none}
 .blog_ctg_self{position: relative; padding: 10px;}
@@ -63,8 +64,8 @@ a:link, a:visited { text-decoration: none;}
 .blog_ctg_name{ clear: both; color: #1b1358;}
 .blog_ctg_body{display: inline-block; vertical-align: middle; max-width: 800px;}
 .blog_ctg_body p{margin: 6px 0}
-.blog_ctg_reply{width: 18px; height: 13px;  background: #FFF url(../img/reply.png) no-repeat left center; display: inline-block;}
-/*http://www.xuanfengge.com*/
+.blog_ctg_reply span{width: 18px; height: 13px;  background: #FFF url(../img/reply.png) no-repeat left center; display: inline-block; margin-right: 5px}
+.blog_ctg_reply a{color: #1b1358}
 
 /*中部右侧列*/
 .r_wapper{background: #FFF; width: 21%; /*height: 1000px;*/ padding: 10px; display: none}
