@@ -2,6 +2,7 @@ from django.shortcuts import render
 from blog.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms.models import model_to_dict
+from blog.forms import CommentForm
 
 # Create your views here.
 def index(request):
@@ -37,17 +38,19 @@ def articles(request, param):
                 contacts = paginator.page(paginator.num_pages)
         else:
             article = Article.objects.get(id=int(param))
-            first_comment = Comment.objects.filter(article = int(param), pid = None)
-            rear_comment = Comment.objects.filter(article=int(param), pid_id__isnull=True)
-            comment = {}
-            # for cmt in rear_comment:
-                # if cmt.pid == None:
-                #     comment.append({'id':cmt.id, 'content':cmt.content, 'username':cmt.username, 'date_publish':cmt.date_publish, 'pid': cmt.pid})
-                # else:
-            #     comment.append(model_to_dict(cmt))
-            # print(comment)
+            sql_comment = Comment.objects.filter(article = int(param))
+            list_comment = []
+            for q_cmt in sql_comment:
+                for l_cmt in list_comment:
+                    if not hasattr(l_cmt, 'children'):
+                        setattr(l_cmt, 'children', [])
+                    if q_cmt.pid == l_cmt:
+                        l_cmt.children.append(q_cmt)
+                if q_cmt.pid == None:
+                    list_comment.append(q_cmt)
+            form = CommentForm()
         return render(request, "article.html", locals())
-    except :
+    except:
         return render(request, "404.html", {"error" : "提交链接非法."})
 
 def category(request, param):

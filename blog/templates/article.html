@@ -28,37 +28,30 @@
         </div>
         <div class="blog_ctg">
             <h3>文章评论</h3>
-            <form action="http://www.xuanfengge.com/wp-comments-post.php" method="post" id="commentform">
-                <div class="mod-ds__user">
-                    <input name="author" type="text" class="js_stoppropagation mod-ds__user-input" placeholder="昵称 *" value="">
-                    <input name="email" type="text" class="js_stoppropagation mod-ds__user-input" placeholder="邮箱 *" value="">
-                </div>
-                <div class="ds-replybox">
-                    <img class="ds-avatar" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/img/comment/default_avator.3a4a69cb.png" width="50">
-
-                    <div class="ds-textarea-wrapper ">
-                        <textarea name="comment" id="comment" class="js_stoppropagation" title="Ctrl+Enter快捷提交" placeholder="发表评论" style="height: 108px;"></textarea>
-                    </div>
-                    <div class="ds-post-toolbar">
-                        <div class="ds-post-options">
-                            <span></span>
-                        </div>
-                        <button class="ds-post-button" name="submit" type="submit" id="submit">发 布</button>
-                        <input type="hidden" name="comment_post_ID" value="6302" id="comment_post_ID">
-                        <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-                        <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="afa8af5617"></p>
-                    </div>
-                </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <table style="margin: 0">
+                    <tr style="height: 30px">
+                        <td>用户：{{ form.username }}</td>
+                    </tr>
+                    <tr style="height: 30px">
+                        <td>邮箱：{{ form.email }}</td>
+                    </tr>
+                    <tr style="height: 30px">
+                        <td>内容：{{ form.content }}</td>
+                    </tr>
+                </table>
+                <input style="height: 30px; width: 80px;margin: 5px" type="submit" value="提交"/>
             </form>
-            <h4>评论{{ first_comment.count }}条</h4>
+            <h4>评论{{ sql_comment.count }}条</h4>
             <ul>
-                {% if first_comment.count > 0 %}
-                    {% for cmt in first_comment %}
+                {% if sql_comment.count > 0 %}
+                    {% for cmt in list_comment %}
                     <li>
                         <div class="blog_ctg_self">
                             <div class="blog_ctg_avatar ">
                                 <img alt="" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50"
-                                     class="avatar" height="50" width="50"></div>
+                                     class="avatar" height="40" width="40"></div>
                             <div class="blog_ctg_body ">
                                 <div class="">
                                     <span class=""><a href="" class="blog_ctg_name">{{ cmt.username }}</a></span>
@@ -69,6 +62,26 @@
                                 </div>
                             </div>
                         </div>
+                        <ul style="padding-left: 40px">
+                            {% for child_cmt in cmt.children %}
+                                <div class="blog_ctg_self">
+                                    <div class="blog_ctg_avatar ">
+                                        <img alt=""
+                                             src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50"
+                                             class="avatar" height="40" width="40"></div>
+                                    <div class="blog_ctg_body ">
+                                        <div class="">
+                                            <span class=""><a href="" class="blog_ctg_name">{{ child_cmt.username }}</a></span>
+                                        </div>
+                                        <p> {{ child_cmt.content }}</p>
+                                        <div class=""><span
+                                                class="blog_ctg_time">{{ child_cmt.date_publish|date:"Y-m-d H:i:s" }}</span>
+                                            <a class="blog_ctg_reply" href="" onclick="return 1"><span></span>回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </ul>
                     </li>
                     {% endfor %}
                 {% endif %}
