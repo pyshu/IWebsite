@@ -19,16 +19,16 @@
             <ul style="width: 100%">
                 <div style="clear: none;margin-bottom: 20px"> {{ article.content|safe }} </div>
                 <p class="autor" style="position:inherit">
-                    <span class="lm f_l"><a href="/">{{ article.category.name }}</a></span>
+                    <span class="lm f_l"><a href="/category/{{ article.category.id }}">{{ article.category.name }}</a></span>
                     <span class="dtime f_l">{{ article.create_date|date:"Y-m-d" }}</span>
                     <span class="viewnum f_l">浏览（{{ article.page_view }})<a href="/"></a></span>
-                    <span class="pingl f_l">评论（<a href="/">30</a>）</span>
+                    <span class="pingl f_l">评论（<a href="#id_blog_ctg">{{ sql_comment.count }}</a>）</span>
                 </p>
             </ul>
         </div>
-        <div class="blog_ctg">
+        <div class="blog_ctg" id="id_blog_ctg">
             <h3>文章评论</h3>
-            <form action="" method="post">
+            <form id ="form" class="cmt_from" action="/articles/{{ article.id }}" method="post">
                 {% csrf_token %}
                 <table style="margin: 0">
                     <tr style="height: 30px">
@@ -37,11 +37,14 @@
                     <tr style="height: 30px">
                         <td>邮箱：{{ form.email }}</td>
                     </tr>
-                    <tr style="height: 30px">
-                        <td>内容：{{ form.content }}</td>
+                    <tr style="height: 160px">
+                        <td><p>内容：</p>{{ form.content }}</td>
                     </tr>
                 </table>
-                <input style="height: 30px; width: 80px;margin: 5px" type="submit" value="提交"/>
+                <input type="hidden"  name="article" value={{ article.id }} />
+                <input type="hidden"  name="pid" value=None />
+                <input type="hidden"  name="reply_who" value=None />
+                <input style="height: 30px; width: 80px;margin: 5px" type="submit" value="提交" />
             </form>
             <h4>评论{{ sql_comment.count }}条</h4>
             <ul>
@@ -58,7 +61,7 @@
                                 </div>
                                 <p>{{ cmt.content }}</p>
                                 <div class=""><span class="blog_ctg_time">{{ cmt.date_publish|date:"Y-m-d H:i:s" }}</span>
-                                    <a class="blog_ctg_reply" href="" onclick="return 1"><span></span>回复</a>
+                                    <a class="blog_ctg_reply" href="javascript:void(0)" onclick="move();"><span></span>回复</a>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +79,7 @@
                                         <p> {{ child_cmt.content }}</p>
                                         <div class=""><span
                                                 class="blog_ctg_time">{{ child_cmt.date_publish|date:"Y-m-d H:i:s" }}</span>
-                                            <a class="blog_ctg_reply" href="" onclick="return 1"><span></span>回复</a>
+                                            <a class="blog_ctg_reply" href="javascript:void(0)" onclick="move();"><span></span>回复</a>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +103,7 @@
                                 href="/category/{{ art.category.id }}">{{ art.category.name }}</a></span>
                         <span class="dtime f_l">{{ art.create_date|date:"Y-m-d" }}</span>
                         <span class="viewnum f_l">浏览({{ art.page_view }})<a href="/"></a></span>
-                        <span class="pingl f_l">评论（<a href="/">30</a>）</span>
+                        <span class="pingl f_l">评论（<a href="/articles/{{ art.id }}#id_blog_ctg">*</a>）</span>
                     </p>
                 </ul>
             </div>

@@ -61,11 +61,14 @@ a:link, a:visited { text-decoration: none;}
 .blog_ctg li{ width: 100%; border-bottom: 1px solid #E6E6E6;list-style: none}
 .blog_ctg_self{position: relative; padding: 10px;}
 .blog_ctg_avatar{width: 50px; height: 50px; margin: 0; display: inline-block; vertical-align: top;}
-.blog_ctg_name{ clear: both; color: #1b1358;}
+.blog_ctg_name{color: #1b1358;font-weight: bold;}
 .blog_ctg_body{display: inline-block; vertical-align: middle; max-width: 800px;}
 .blog_ctg_body p{margin: 6px 0}
-.blog_ctg_reply span{width: 18px; height: 13px;  background: #FFF url(../img/reply.png) no-repeat left center; display: inline-block; margin-right: 5px}
-.blog_ctg_reply a{color: #1b1358}
+.blog_ctg_reply{color: #1b1358}
+.blog_ctg_reply span{ width: 18px; height: 13px;  background: #FFF url(../img/reply.png) no-repeat left center; display: inline-block; margin-right: 5px}
+#id_username, #id_email{height: 20px}
+#id_content{font-size: 18px; height: 150px; margin-top: 5px; max-width: 850px; }
+.cmt_from{border: 2px ridge; padding: 10px;}
 
 /*中部右侧列*/
 .r_wapper{background: #FFF; width: 21%; /*height: 1000px;*/ padding: 10px; display: none}

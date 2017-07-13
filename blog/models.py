@@ -50,12 +50,13 @@ class Article(models.Model):
 class Comment(models.Model):
     content = models.TextField(verbose_name='评论内容')
     username = models.CharField(verbose_name='用户名', max_length=30, blank=True, null=True)
-    email = models.EmailField(verbose_name='邮箱地址', max_length=50, blank=True, null=True)
+    email = models.EmailField(verbose_name='邮箱地址', max_length=50)
     date_publish = models.DateTimeField('发布时间', auto_now_add=True)
     # user = models.ForeignKey(User, verbose_name='用户', blank=True, null=True)
     # url = models.URLField(verbose_name='个人地址', max_length=100, blank=True, null=True)
     article = models.ForeignKey(Article, verbose_name='文章')
     pid = models.ForeignKey('self', verbose_name='父级评论', blank=True, null=True)
+    reply_who = models.CharField(verbose_name='回复谁', max_length=30, blank=True, null=True)
 
     class Meta:
         verbose_name = '评论'

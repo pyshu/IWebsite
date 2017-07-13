@@ -24,6 +24,19 @@ def index(request):
 def articles(request, param):
     tag = Tag.objects.all()
     category = Category.objects.all()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        # 判断form是否有效
+        print(request.POST)
+        if form.is_valid():
+            if request.POST['pid'] == "None":
+                pid = None
+            else:
+                pid = int(request.POST['pid'])
+            instance = Comment.objects.create(username=request.POST['username'],email=request.POST['email'],content=request.POST['content'],
+                                              article_id = int(request.POST['article']),pid_id = pid ,reply_who = request.POST['reply_who'])
+            instance.save()
     try:
         if param == '':
             page = request.GET.get('page')
@@ -38,6 +51,8 @@ def articles(request, param):
                 contacts = paginator.page(paginator.num_pages)
         else:
             article = Article.objects.get(id=int(param))
+            article.page_view = article.page_view + 1
+            article.save()
             sql_comment = Comment.objects.filter(article = int(param))
             list_comment = []
             for q_cmt in sql_comment:
