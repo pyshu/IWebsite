@@ -1,30 +1,28 @@
 from django.shortcuts import render
 from blog.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.forms.models import model_to_dict
 from blog.forms import CommentForm
 
 # Create your views here.
 def index(request):
-    article = Article.objects.filter(istop=True)
+    tag = Tag.objects.all()
+    category = Category.objects.all()
+    newest_article = Article.objects.filter().order_by('-create_date')[:5]
+    istop_article = Article.objects.filter(istop=True)
     page = request.GET.get('page')
-    paginator = Paginator(article, 6)  # Show 5 contacts per page
+    paginator = Paginator(istop_article, 6)
     try:
         contacts = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
         contacts = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
         contacts = paginator.page(paginator.num_pages)
-    tag = Tag.objects.all()
-    category = Category.objects.all()
     return  render(request, "index.html", locals())
 
 def articles(request, param):
     tag = Tag.objects.all()
     category = Category.objects.all()
-
+    newest_article = Article.objects.filter().order_by('-create_date')[:5]
     if request.method == "POST":
         form = CommentForm(request.POST)
         # 判断form是否有效
@@ -40,14 +38,12 @@ def articles(request, param):
     try:
         if param == '':
             page = request.GET.get('page')
-            paginator = Paginator(Article.objects.all(), 10)  # Show 5 contacts per page
+            paginator = Paginator(Article.objects.all(), 10)
             try:
                 contacts = paginator.page(page)
             except PageNotAnInteger:
-                # If page is not an integer, deliver first page.
                 contacts = paginator.page(1)
             except EmptyPage:
-                # If page is out of range (e.g. 9999), deliver last page of results.
                 contacts = paginator.page(paginator.num_pages)
         else:
             article = Article.objects.get(id=int(param))
@@ -71,6 +67,7 @@ def articles(request, param):
 def category(request, param):
     tag = Tag.objects.all()
     category = Category.objects.all()
+    newest_article = Article.objects.filter().order_by('-create_date')[:5]
     try:
         if param == '':
             article = Article.objects.filter(category=1)
@@ -79,14 +76,12 @@ def category(request, param):
             article = Article.objects.filter(category=int(param))
             category_name = Category.objects.get(id=int(param))
         page = request.GET.get('page')
-        paginator = Paginator(article, 6)  # Show 5 contacts per page\
+        paginator = Paginator(article, 6)
         try:
             contacts = paginator.page(page)
         except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
             contacts = paginator.page(1)
         except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
             contacts = paginator.page(paginator.num_pages)
         return render(request, "category.html", locals())
     except:
@@ -95,6 +90,7 @@ def category(request, param):
 def tag(request, param):
     tag = Tag.objects.all()
     category = Category.objects.all()
+    newest_article = Article.objects.filter().order_by('-create_date')[:5]
     try:
         if param == '':
             article = Article.objects.filter(tag=1)
@@ -103,14 +99,12 @@ def tag(request, param):
             article = Article.objects.filter(tag=int(param))
             tag_name = Tag.objects.get(id=int(param))
         page = request.GET.get('page')
-        paginator = Paginator(article, 6)  # Show 5 contacts per page\
+        paginator = Paginator(article, 6)
         try:
             contacts = paginator.page(page)
         except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
             contacts = paginator.page(1)
         except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
             contacts = paginator.page(paginator.num_pages)
         return render(request, "tag.html", locals())
     except:

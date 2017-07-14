@@ -11,15 +11,22 @@
         function move() {
             //获取移动的DIV对象
             var obj = document.getElementById("form");
-{#            obj.style.display = 'none';#}
+            {#            obj.style.display = 'none';#}
         }
+    </script>
+    <link href="{% static 'js/kindeditor-4.1.10/plugins/code/prettify.css' %}" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="{% static 'js/kindeditor-4.1.10/plugins/code/prettify.js' %}"></script>
+    <script>
+        $(function () {
+            prettyPrint();
+        });
     </script>
 </head>
 <body>
 <div class="b_wapper">
     <header class="">
         <div class="logo l">
-            <img src="../static/img/pyshu2.png" />
+            <img src="../static/img/pyshu2.png"/>
         </div>
         <nav class="hd-nav">
             <ul class="hd-ul">
@@ -36,19 +43,59 @@
         </div>
         <div class="r_wapper l">
 
-            {% block search %}{% endblock %}
+            {% block search %}
+                <div class="searchFrom">
+                    <form class="sform " method="get" action="" style="" onsubmit="return searchResult(this);">
+                        <input type="hidden" name="page_id" value="6432">
+                        <input type="hidden" name="searchtype" value="post">
+                        <input type="text" class="stext" name="search" id="form_search" value=""
+                               placeholder="请输入需要搜索的文字">
+                        <input type="submit" class="ssubmit" value="Go!">
+                    </form>
+                </div>
+            {% endblock %}
 
-            <div class="abt_me">
-                <h2>关于博主</h2>
-                <figure><img src="{% static 'img/hat.jpg' %}"></figure>
-                <p>&nbsp;&nbsp;关于我,我就是我。</p>
-            </div>
+            {% block abt_me %}
+                <div class="abt_me">
+                    <h2>关于博主</h2>
+                    <figure><img src="{% static 'img/hat.jpg' %}"></figure>
+                    <p>&nbsp;&nbsp;关于我,我也不知道怎么介绍我自己（PS:太菜）。</p>
+                </div>
+            {% endblock %}
 
-            {% block blog_cat %}{% endblock %}
+            {% block blog_cat %}
+                <div class="new_cat">
+                    <h2>文章分类</h2>
+                    <ul>
+                        {% for cat in category %}
+                            <li><a href="/category/{{ cat.id }}"><span>{{ cat.name }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endblock %}
 
-            {% block blog_art %}{% endblock %}
+            {% block blog_art %}
+                <div class="new_art">
+                    <h2>最新文章</h2>
+                    <ul>
+                        {% for n_art in newest_article %}
+                            <li><a href="/articles/{{ n_art.id }}"><span>{{ n_art.title }}</span></a>
+                                <p>发布日期：{{ n_art.create_date|date:'Y-m-d H:i' }}</p></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endblock %}
 
-            {% block blog_tag %}{% endblock %}
+            {% block blog_tag %}
+                <div class="cld_tag">
+                    <h2>标签云</h2>
+                    <ul>
+                        {% for t in tag %}
+                            <li><a href="/tags/{{ t.id }}"><span>{{ t.name }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endblock %}
 
         </div>
     </div>

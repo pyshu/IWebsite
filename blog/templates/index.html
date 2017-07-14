@@ -6,29 +6,28 @@
     <li class="hd-li"><a class="cur" href="/index/"><span>首页<i class="underline"></i></span></a></li>
     <li class="hd-li"><a href="/articles/"><span>文章<i class="underline"></i></span></a></li>
     <li class="hd-li"><a href="/category/"><span>分类<i class="underline"></i></span></a></li>
-    <li class="hd-li"><a href="https://github.com/pyshu"  target="_blank"><span>github<i class="underline"></i></span></a></li>
+    <li class="hd-li"><a href="https://github.com/pyshu"  target="_blank"><span>仓库<i class="underline"></i></span></a></li>
     <li class="hd-li"><a href="/about/"><span>关于<i class="underline"></i></span></a></li>
 {% endblock %}
 
 {% block blog_content %}
     <h2><span><a href="/articles/">More...</a></span>推荐文章</h2>
-    {% for art in contacts %}
+    {% for art in istop_article %}
         <div class="blogs">
             <figure><img src="../static/img/01.jpg"></figure>
-            <ul>
-                <h3><a href="/articles/{{ art.id }}">{{ art.title }}</a></h3>
-                <p class="t_idx">{{ art.describe }}</p>
-                <p class="autor">
+            <div class="art_show">
+                <h3><a href="/articles/{{ art.id }}"><span>{{ art.title }}</span></a></h3>
+                <div><p class="t_idx">{{ art.describe }}</p></div>
+                <div class="autor">
                     <span class="lm f_l"><a href="/category/{{ art.category.id }}">{{ art.category.name }}</a></span>
                     <span class="dtime f_l">{{ art.create_date|date:"Y-m-d" }}</span>
                     <span class="viewnum f_l">浏览({{ art.page_view }})<a href="/"></a></span>
-                    <span class="pingl f_l">评论（<a href="/articles/{{ art.id }}#id_blog_ctg">*</a>）</span>
-                </p>
-            </ul>
+                    <span class="pingl f_l">评论（<a href="/articles/{{ art.id }}#id_blog_ctg">**</a>）</span>
+                </div>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}
-
 
 {% block blog_paginator %}
     {% if paginator.count > 6 %}
@@ -54,47 +53,4 @@
     {% endif %}
 {% endblock %}
 
-
-{% block search %}
-    <div class="searchFrom">
-        <form class="sform " method="get" action="" style="" onsubmit="return searchResult(this);">
-            <input type="hidden" name="page_id" value="6432">
-            <input type="hidden" name="searchtype" value="post">
-            <input type="text" class="stext" name="search" id="form_search" value="" placeholder="请输入需要搜索的文字">
-            <input type="submit" class="ssubmit" value="Go!">
-        </form>
-    </div>
-{% endblock %}
-
-{% block blog_cat %}
-    <div class="new_cat">
-        <h2>文章分类</h2>
-        <ul>
-            {% for cat in category %}
-                <li><a href=""><span>{{ cat.name }}</span></a></li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}
-
-{% block blog_art %}
-    <div class="new_art">
-        <h2>最新文章</h2>
-        <ul>
-            {% for d in article %}
-                <li><img src="{% static 'img/hat.jpg' %}"><a href="/articles/{{ d.id }}"><span>{{ d.title }}</span></a><p>发布日期：{{ d.create_date|date:'Y-m-d' }}</p></li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}
-
-{% block blog_tag %}
-    <div class="cld_tag">
-        <h2>标签云</h2>
-        <ul>
-            {% for t in tag %}
-                <li><a href="/tags/{{ t.id }}"><span>{{ t.name }}</span></a></li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}
+{% block abt_me %}{% endblock %}
