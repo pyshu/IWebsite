@@ -6,7 +6,7 @@
 
 {% if param != '' %}
     {% block headmata %}
-        <meta name="keywords" content="pyshu,小窝,博客,{{ article.title }}">
+        <meta name="keywords" content="pyshu,小窝,博客,{{ article.title }},{{ article_tag_name }}">
         <meta name="description" content="{{ article.describe|safe }}">
     {% endblock %}
 {% endif %}
