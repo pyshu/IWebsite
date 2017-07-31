@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Pyshu的小窝{% endblock %}</title>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {% block headmata %}
+    <meta name="keywords" content="pyshu,小窝,博客">
+    <meta name="description" content="用文章记录走过的路。">
+    {% endblock %}
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script type="text/javascript">
@@ -45,7 +49,7 @@
 
             {% block search %}
                 <div class="searchFrom">
-                    <form class="sform " method="get" action="" style="" onsubmit="return searchResult(this);">
+                    <form class="sform " method="post" action="" style="" onsubmit="return searchResult(this);">
                         <input type="hidden" name="page_id" value="6432">
                         <input type="hidden" name="searchtype" value="post">
                         <input type="text" class="stext" name="search" id="form_search" value=""

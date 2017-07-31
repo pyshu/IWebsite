@@ -1,4 +1,4 @@
-*{background: #ffffff none no-repeat fixed center top; margin: 0 auto; padding: 0; border-radius: 3px;}
+*{background: #fff none no-repeat fixed center top; margin: 0 auto; padding: 0; border-radius: 1px;}
 .l{ float: left;}
 .r{ float: right;}
 .f_l{ float: left;}
@@ -14,28 +14,28 @@ header {border-bottom:5px solid #6E6E6E; background-color: #FFF; overflow: hidde
 .logo figure { float: left; width: 25%; overflow: hidden;}
 .logo img{ width: 165px; height: 36px;}
 .logo p{ background-color: #FFF; line-height: 32px; font-size: 24px;}
-.hd-nav{float: right; margin-right: 20px;}
+.hd-nav{float: right; margin-right: 20px;background-color: #FFF;}
 .hd-ul{ list-style: none; line-height: 58px;}
 .hd-li{ margin: 0 15px; float: left; background-color: #FFF; }
 .hd-li a{ text-decoration: none; font-size: 20px; color: black;}
 .hd-li a:hover{ padding-bottom:5px; border-bottom:3px solid #000;background-color: #999; }
+.hd-li a span{background-color: #FFF;}
 .cur { padding-bottom:5px; border-bottom:3px solid #000;background-color: #999;}
 
 /*左文章列表*/
 .center {background-color: #FFFFFF; height: auto; overflow: hidden;}
-.l_wapper{margin: 10px 0;padding: 10px; background-color: #FFF; border: 1px solid #CCC;}
+.l_wapper{margin: 0px 0;padding: 10px; background-color: #FFF; border: 0px solid #CCC;}
 
 a:link, a:visited { text-decoration: none;}
 .topnews { margin: 0;}
-.topnews h2 { font-size: 18px; font-weight: bold; line-height: 30px; border-bottom: #6E6E6E 2px solid;  }
-.topnews h2 b { }
+.h2css { font-size: 18px; font-weight: bold; line-height: 30px; border-bottom: #6E6E6E 2px solid;}
 .topnews h2 span { float: right; font-size: 18px; font-weight: normal; }
 .topnews h2 span a { padding: 0 5px;margin-right: 10px}
 .topnews h2 span a:hover { color: #000; padding-bottom: 1px; border-bottom:1px solid #000;}
-.blogs { padding: 10px 8px; position: relative; border-bottom: #CCC 1px solid; overflow: hidden;}
+.blogs { padding: 10px 8px; position: relative; border-bottom: #CCC 2px solid; overflow: hidden;}
 .blogs h3 { font-size: 17px; font-weight: bold; overflow: hidden;}
 .blogs h3 a { line-height:31px; color: #474645;}
-.blogs h3 span:hover { color: #066; padding-bottom: 5px; border-bottom:2px solid #000; padding-top: 5px; border-top:2px solid #000; transition: all 0.5s ease-out;}
+.blogs h3 span:hover { color: #7bcfec; padding-bottom: 5px; border-bottom:2px solid #000; transition: all 0.5s ease-out;}
 .blogs h3:hover{ overflow:visible; }
 .blogs .t_idx{text-indent: 2em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; }
 .blogs figure { float: left; width: 20%; overflow: hidden; display: none}
@@ -55,11 +55,11 @@ a:link, a:visited { text-decoration: none;}
 
 /*评论*/
 .blog_ctg{width: auto; position: relative; padding-left: 20px; }
-.blog_ctg h3{font-size: 16px; margin: 10px 0; padding-bottom: 5px; border-bottom: 1px solid #E6E6E6; }
-.blog_ctg h4{font-size: 14px; margin: 10px 0 10px 10px; padding-bottom: 5px; border-bottom: 1px solid #E6E6E6; }
+.blog_ctg h3{font-size: 16px; margin: 10px 0; padding-bottom: 0px; border-bottom: 0px solid #E6E6E6; }
+.blog_ctg h4{font-size: 14px; margin: 20px 0; padding-bottom: 5px; border-bottom: 1px solid #E6E6E6; }
 .blog_ctg ul{}
-.blog_ctg li{ width: 100%; border-bottom: 1px solid #E6E6E6;list-style: none}
-.blog_ctg_self{position: relative; padding: 10px;}
+.blog_ctg li{ width: 100%; list-style: none}
+.blog_ctg_self{position: relative; padding: 10px;  border-bottom: 1px solid #E6E6E6;}
 .blog_ctg_avatar{width: 50px; height: 50px; margin: 0; display: inline-block; vertical-align: top;}
 .blog_ctg_name{color: #1b1358;font-weight: bold;}
 .blog_ctg_body{display: inline-block; vertical-align: middle; max-width: 800px;}
@@ -71,34 +71,34 @@ a:link, a:visited { text-decoration: none;}
 .cmt_from{border: 2px ridge; padding: 10px;}
 
 /*中部右侧列*/
-.r_wapper{background: #FFF; width: 21%; padding: 10px; display: none}
+.r_wapper{background: #FFF; width: 21%; padding: 10px; display: none; border-left: 1px solid #CCC; border-bottom: 1px solid #CCC;}
 /*搜索*/
 .searchFrom{ height: 38px; padding: 10px; width: 240px;border: 1px solid #CCC;}
 .stext{ background:#ffffff; border:1px solid #e0e0e0; color:#8d9095; font-size:16px;line-height:18px; padding-top:8px; padding-bottom:8px; height:20px; width: 84%; float: left;}
 .ssubmit{ width: 15%; float: left; height: 38px;}
 /*关于我*/
 .abt_me{ width: 240px; height: auto; padding: 10px; border: 1px solid #CCC;}
-.abt_me h2, .new_art h2,.cld_tag h2, .new_cat h2{ height: 30px;font-size: 18px; border-bottom: 2px solid #6E6E6E; border-radius: 4px}
+.abt_me h2, .new_art h2,.cld_tag h2, .new_cat h2{ height: 30px;font-size: 18px; border-bottom: 2px solid #6E6E6E; border-radius: 1px}
 .abt_me figure { overflow: hidden; }
 .abt_me img{width: 240px;  height: 272px; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
 .abt_me figure:hover img{ -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
 .abt_me p{ height: auto; line-height: 27px;}
 /*文章分类*/
 .new_cat{ width: 240px; padding: 10px; margin-top: 10px;border: 1px solid #CCC;}
-.new_cat ul{list-style: circle; border-bottom:1px solid #000000; padding-left: 20px}
+.new_cat ul{list-style: circle; border-bottom:1px solid #ccc; padding-left: 20px}
 .new_cat li{line-height: 26px;}
 .new_cat a{text-decoration: none; color: black;}
-.new_cat span:hover{ padding: 2px 0; border-bottom:2px solid #000; border-top:2px solid #000; transition: all 0.5s ease-out;}
+.new_cat span:hover{color: #7bcfec; padding: 2px 0; border-bottom:2px solid #CCC; transition: all 0.5s ease-out;}
 /*最新文章*/
 .new_art{ width: 240px; padding: 10px; margin-top: 10px;border: 1px solid #CCC;}
 .new_art ul{list-style: none;}
-.new_art li{height: 55px; margin-top: 10px; padding-bottom: 5px; border-bottom:1px solid #000000; line-height: 29px;}
+.new_art li{height: 55px; margin-top: 10px; padding-bottom: 5px; border-bottom:1px solid #CCC; line-height: 29px;}
 .new_art a{overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #474645; display:block; font-weight: bold; line-height: 30px;}
-.new_art span:hover{ padding: 5px 0; border-bottom:2px solid #000; border-top:2px solid #000; transition: all 0.5s ease-out;}
+.new_art span:hover{color: #7bcfec; padding: 5px 0; border-bottom:2px solid #000; transition: all 0.5s ease-out;}
 .new_art p{ height: 30px;}
 /*云标签*/
 .cld_tag{ width: 240px; padding: 10px;margin-top: 10px; border: 1px solid #CCC;}
-.cld_tag ul {list-style: none;height: auto; overflow: hidden;border-bottom: 1px solid #000000;}
+.cld_tag ul {list-style: none;height: auto; overflow: hidden;border-bottom: 1px solid #CCC;}
 .cld_tag li { height: 20px; float: left; margin: 10px 5px 5px 10px; padding: 5px; border:1px solid #000; border-radius: 6px;}
 .cld_tag a{ text-decoration: none; color: black; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
 .cld_tag li:hover{font-size: 18px; font-weight: bold; border-radius: 1px;-moz-transform: scale(1); -webkit-transform: scale(1); -o-transform: scale(1); -ms-transform: scale(1);}

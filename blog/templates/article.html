@@ -4,6 +4,13 @@
 
 {% block title %}Pyshu·{{ article.title }}{% endblock %}
 
+{% if param != '' %}
+    {% block headmata %}
+        <meta name="keywords" content="pyshu,小窝,博客,{{ article.title }}">
+        <meta name="description" content="{{ article.describe|safe }}">
+    {% endblock %}
+{% endif %}
+
 {% block nav %}
     <li class="hd-li"><a href="/index"><span>首页<i class="underline"></i></span></a></li>
     <li class="hd-li"><a class="cur" href="/articles/"><span>文章<i class="underline"></i></span></a></li>
@@ -14,17 +21,15 @@
 
 {% block blog_content %}
     {% if param != '' %}
-        <h2><b>全文阅读</b>: {{ article.title }}</h2>
+        <h2 class="h2css" style="margin-bottom: 20px"><b>全文阅读</b>: {{ article.title }}</h2>
         <div class="blogs">
-            <ul style="width: 100%">
-                <div style="clear: none;margin-bottom: 20px"> {{ article.content|safe }} </div>
-                <p class="autor" style="position:inherit">
-                    <span class="lm f_l"><a href="/category/{{ article.category.id }}">{{ article.category.name }}</a></span>
-                    <span class="dtime f_l">{{ article.create_date|date:"Y-m-d" }}</span>
-                    <span class="viewnum f_l">浏览（{{ article.page_view }})<a href="/"></a></span>
-                    <span class="pingl f_l">评论（<a href="#id_blog_ctg">{{ sql_comment.count }}</a>）</span>
-                </p>
-            </ul>
+            <div style="clear: none;margin-bottom: 20px"> {{ article.content|safe }}</div>
+            <div class="autor" style="position:inherit">
+                <span class="lm f_l"><a href="/category/{{ article.category.id }}">{{ article.category.name }}</a></span>
+                <span class="dtime f_l">{{ article.create_date|date:"Y-m-d" }}</span>
+                <span class="viewnum f_l">浏览（{{ article.page_view }})<a href="/"></a></span>
+                <span class="pingl f_l">评论（<a href="#id_blog_ctg">{{ sql_comment.count }}</a>）</span>
+            </div>
         </div>
         <div class="blog_ctg" id="id_blog_ctg">
             <h3>文章评论</h3>
@@ -91,7 +96,7 @@
             </ul>
         </div>
     {% else %}
-        <h2>全部文章</h2>
+        <h2 class="h2css">全部文章</h2>
         {% for art in contacts %}
             <div class="blogs">
                 <figure><img src="../static/img/01.jpg"></figure>

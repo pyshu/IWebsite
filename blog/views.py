@@ -47,6 +47,10 @@ def articles(request, param):
                 contacts = paginator.page(paginator.num_pages)
         else:
             article = Article.objects.get(id=int(param))
+            articletag = ''
+            # if article.tag != None:
+            #     for t in article.tag:
+            #         articletag = articletag + t.name
             article.page_view = article.page_view + 1
             article.save()
             sql_comment = Comment.objects.filter(article = int(param))
