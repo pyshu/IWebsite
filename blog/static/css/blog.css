@@ -1,15 +1,15 @@
-*{background: #fff none no-repeat fixed center top; margin: 0 auto; padding: 0; border-radius: 1px;}
+*{margin: 0 auto; padding: 0; border-radius: 1px;}
 .l{ float: left;}
 .r{ float: right;}
 .f_l{ float: left;}
 .f_r{ float: right;}
 .c{ float: none;}
 .bk_color{ background-color: #FFF;}
-body{background: url("../img/bg1.png"); background-size: 100%; min-width: 150px}
-.b_wapper{max-width: 1200px; background-color: #FFF; position: relative; height: auto; min-height: 100%; /*border: 1px solid #CCC;*/}
+body{background: url("../img/bg.gif") repeat; min-width: 150px}
+.b_wapper{max-width: 1200px; position: relative; height: auto; min-height: 100%; margin-top: 15px;}
 
 /*导航栏*/
-header {border-bottom:5px solid #6E6E6E; background-color: #FFF; overflow: hidden; margin-bottom: 7px;}
+header {border-bottom:5px solid #6E6E6E; background-color: #FFF; overflow: hidden; margin-bottom: 13px;}
 .logo{ padding: 10px; background-color: #FFF; margin-left: 14px;}
 .logo figure { float: left; width: 25%; overflow: hidden;}
 .logo img{ width: 165px; height: 36px;}
@@ -117,6 +117,3 @@ footer p{ width: 173px; line-height: 25px; background: #6E6E6E; color: #FFF;}
     .r_wapper{display: block}
     .l_wapper{width: 75%}
 }
-/*@media all and (max-width: 795px) {*/
-    /*.hd-li{width: auto;}*/
-/*}*/
