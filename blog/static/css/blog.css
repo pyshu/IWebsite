@@ -104,7 +104,7 @@ a:link, a:visited { text-decoration: none;}
 .cld_tag li:hover{font-size: 18px; font-weight: bold; border-radius: 1px;-moz-transform: scale(1); -webkit-transform: scale(1); -o-transform: scale(1); -ms-transform: scale(1);}
 /*尾部*/
 footer {width: 100%; background-color: #6E6E6E; bottom: 0; height: 53px;}
-footer p{ width: 173px; line-height: 25px; background: #6E6E6E; color: #FFF;}
+footer p{ /*width: 173px;*/ line-height: 25px; background: #6E6E6E; color: #FFF; text-align: center;}
 
 /*分页*/
 .page{color: #FFFFFF; text-align:center; margin: 0 auto;width: 165px;}
