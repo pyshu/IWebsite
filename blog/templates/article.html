@@ -2,7 +2,13 @@
 {% load staticfiles %}
 {% load pagetag %}
 
-{% block title %}Pyshu·{{ article.title }}{% endblock %}
+{% block title %}Pyshu&nbsp;·&nbsp;
+    {% if article.title %}
+        {{ article.title }}
+    {% else %}
+        全部文章
+    {% endif %}
+{% endblock %}
 
 {% if param != '' %}
     {% block headmata %}
@@ -107,7 +113,7 @@
                         <span class="lm f_l"><a href="/category/{{ art.category.id }}">{{ art.category.name }}</a></span>
                         <span class="dtime f_l">{{ art.create_date|date:"Y-m-d" }}</span>
                         <span class="viewnum f_l">浏览({{ art.page_view }})<a href="/"></a></span>
-                        <span class="pingl f_l">评论（<a href="/articles/{{ art.id }}#id_blog_ctg">**</a>）</span>
+                        <span class="pingl f_l">评论（<a href="/articles/{{ art.id }}#id_blog_ctg">{{ art.count }}</a>）</span>
                     </div>
                 </div>
             </div>

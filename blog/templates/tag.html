@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load pagetag %}
 
-{% block title %}Pyshu·文章标签{% endblock %}
+{% block title %}Pyshu&nbsp;·&nbsp;文章标签{% endblock %}
 
 {% block nav %}
     <li class="hd-li"><a href="/index"><span>首页<i class="underline"></i></span></a></li>
@@ -15,7 +15,7 @@
 {% block blog_content %}
     <h2 class="h2css">文章标签 &gt;&gt; {{ tag_name }}</h2>
     {% for art in contacts %}
-        <div class="blogs" style="min-height: 125px">
+        <div class="blogs">
             <ul style="width: auto">
                 <h3><a href="/articles/{{ art.id }}">{{ art.title }}</a></h3>
                 <p class="t_idx">{{ art.describe }}</p>

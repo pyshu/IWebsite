@@ -50,6 +50,7 @@
             {% block search %}
                 <div class="searchFrom">
                     <form class="sform " method="post" action="" style="" onsubmit="return searchResult(this);">
+                        {% csrf_token %}
                         <input type="hidden" name="page_id" value="6432">
                         <input type="hidden" name="searchtype" value="post">
                         <input type="text" class="stext" name="search" id="form_search" value=""
@@ -105,7 +106,7 @@
     </div>
 
     <footer>
-        <p>Copyright &copy; 2016-{% now "Y" %}<br>&nbsp;个人博客 by pyshu</p>
+        <p>Copyright &copy; 2016-{% now "Y" %}<br>个人博客 by pyshu</p>
     </footer>
 </div>
 </body>

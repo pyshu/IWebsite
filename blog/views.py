@@ -2,24 +2,47 @@ from django.shortcuts import render
 from blog.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.forms import CommentForm
+from django.db.models import Count
 
-# Create your views here.
-def index(request):
-    tag = Tag.objects.all()
-    category = Category.objects.all()
-    newest_article = Article.objects.filter().order_by('-create_date')[:5]
-    istop_article = Article.objects.filter(istop=True)
-    page = request.GET.get('page')
-    paginator = Paginator(istop_article, 6)
+
+def paginator_func(queryset, num_pag, page):
+    '''
+    分页处理方法
+    :param queryset:
+    :param num_pag:
+    :param page:
+    :return :
+    '''
+    paginator = Paginator(queryset, num_pag)
     try:
         contacts = paginator.page(page)
     except PageNotAnInteger:
         contacts = paginator.page(1)
     except EmptyPage:
         contacts = paginator.page(paginator.num_pages)
+    return contacts
+
+def index(request):
+    '''
+    主页方法
+    :param request:
+    :return:
+    '''
+    tag = Tag.objects.all()
+    category = Category.objects.all()
+    newest_article = Article.objects.filter().order_by('-create_date')[:5]
+    istop_article = Article.objects.filter(istop=True).values().annotate(count=Count('comment__article')).values()
+    page = request.GET.get('page')
+    contacts = paginator_func(istop_article, 6, page)
     return  render(request, "index.html", locals())
 
 def articles(request, param):
+    '''
+    文章方法
+    :param request:
+    :param param:
+    :return:
+    '''
     tag = Tag.objects.all()
     category = Category.objects.all()
     newest_article = Article.objects.filter().order_by('-create_date')[:5]
@@ -38,13 +61,7 @@ def articles(request, param):
     try:
         if param == '':
             page = request.GET.get('page')
-            paginator = Paginator(Article.objects.all(), 10)
-            try:
-                contacts = paginator.page(page)
-            except PageNotAnInteger:
-                contacts = paginator.page(1)
-            except EmptyPage:
-                contacts = paginator.page(paginator.num_pages)
+            contacts = paginator_func(Article.objects.all().values().annotate(count=Count('comment__article')).values(), 10, page)
         else:
             article = Article.objects.get(id=int(param))
             article_tag_name = ''
@@ -68,6 +85,12 @@ def articles(request, param):
         return render(request, "404.html", {"error" : "提交链接非法."})
 
 def category(request, param):
+    '''
+    分类方法
+    :param request:
+    :param param:
+    :return:
+    '''
     tag = Tag.objects.all()
     category = Category.objects.all()
     newest_article = Article.objects.filter().order_by('-create_date')[:5]
@@ -79,18 +102,18 @@ def category(request, param):
             article = Article.objects.filter(category=int(param))
             category_name = Category.objects.get(id=int(param))
         page = request.GET.get('page')
-        paginator = Paginator(article, 6)
-        try:
-            contacts = paginator.page(page)
-        except PageNotAnInteger:
-            contacts = paginator.page(1)
-        except EmptyPage:
-            contacts = paginator.page(paginator.num_pages)
+        contacts = paginator_func(article, 6, page)
         return render(request, "category.html", locals())
     except:
         return render(request, "404.html", {"error": "提交链接非法."})
 
 def tag(request, param):
+    '''
+    云标签方法
+    :param request:
+    :param param:
+    :return:
+    '''
     tag = Tag.objects.all()
     category = Category.objects.all()
     newest_article = Article.objects.filter().order_by('-create_date')[:5]
@@ -102,16 +125,15 @@ def tag(request, param):
             article = Article.objects.filter(tag=int(param))
             tag_name = Tag.objects.get(id=int(param))
         page = request.GET.get('page')
-        paginator = Paginator(article, 6)
-        try:
-            contacts = paginator.page(page)
-        except PageNotAnInteger:
-            contacts = paginator.page(1)
-        except EmptyPage:
-            contacts = paginator.page(paginator.num_pages)
+        contacts = paginator_func(article, 6, page)
         return render(request, "tag.html", locals())
     except:
         return render(request, "404.html", {"error": "提交链接非法."})
 
 def about(request):
+    '''
+    关于本站方法
+    :param request:
+    :return:
+    '''
     return render(request, "about.html",)
